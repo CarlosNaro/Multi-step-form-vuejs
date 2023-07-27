@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter, RouteRecordRaw }  from 'vue-router'
 import YourInfo from '../pages/YourInfoPage.vue'
 const routes:  Array<RouteRecordRaw> = [
+    
     {
         path: "/",
         name: "YOUR INFO",
