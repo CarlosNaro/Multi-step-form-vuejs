@@ -13,11 +13,11 @@ const rules = reactive({
   required: false,
 });
 
-const email = ref("");
+// const email = ref("");
 
 const emailError = ref(false);
 
-const isValidEmail = (value) => {
+const isValidEmail = (value: any) => {
   // Validar el formato del email utilizando una expresión regular simple
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailPattern.test(value);
@@ -35,22 +35,19 @@ const submitForm = () => {
 };
 
 const is_validate = () => {
- 
   // if (objData.username == "") {
   //   rules.required = true;
   // } else {
   //   return (rules.required = false);
   // }
 
-  console.log("hola")
+  console.log("hola");
 };
 </script>
 
 <template>
   <div class="flex flex-col justify-between h-full md:bg-white bg-slate-100">
-    <div
-      class="mx-5 md:mx-0 bg-white rounded-lg -my-16 md:my-0 p-7 text-justify"
-    >
+    <div class="mx-5 md:mx-0 bg-white rounded-lg -my-16 md:my-0 p-7 text-justify">
       <h1 class="pb-3 text-xl md:text-2xl font-bold">Personal info</h1>
 
       <div class="Encabezado pb-5">
@@ -61,9 +58,7 @@ const is_validate = () => {
 
       <form @input="is_validate">
         <div>
-          <label
-            for="name"
-            class="block text-sm font-medium leading-6 text-gray-900"
+          <label for="name" class="block text-sm font-medium leading-6 text-gray-900"
             >Name</label
           >
 
@@ -92,12 +87,8 @@ const is_validate = () => {
             :class="{ error: emailError }"
           />
         </div>
-        <p v-if="emailError" class="error-text">
-          Por favor, ingresa un email válido.
-        </p>
-        <span v-if="rules.required" :class="rules.target">{{
-          rules.Message
-        }}</span>
+        <p v-if="emailError" class="error-text">Por favor, ingresa un email válido.</p>
+        <span v-if="rules.required" :class="rules.target">{{ rules.Message }}</span>
 
         <div class="mt-4">
           <label
