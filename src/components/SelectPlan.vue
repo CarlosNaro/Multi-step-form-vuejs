@@ -1,13 +1,56 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref, watch, computed, reactive, onMounted, useAttrs } from "vue";
 import Toggle from "./Toggle.vue";
+import { products } from "../data/Menu";
+import useStorPlan from "../store/planStor.ts";
+
+export interface IMenu {
+  id: number;
+  name: string;
+  url: string;
+  price: number;
+  label: string;
+}
 
 const isToggle = ref(false);
-
+const tiempo = reactive("");
+const menuList: Array<IMenu> = [];
 watch(isToggle, (nuevoValor, viejoValor) => {
   console.log(`La variable cambió de ${viejoValor} a ${nuevoValor}`);
   // Aquí puedes ejecutar cualquier otra lógica que desees realizar cuando la variable cambia.
 });
+
+const { getPlan, UsePlan } = useStorPlan();
+const listPlan = computed(() => getPlan());
+const Plan = UsePlan(isToggle.value);
+
+console.log("listPlan ", listPlan.value);
+
+products.forEach((element: any) => {
+  if (isToggle.value) {
+    const menu: IMenu = {
+      id: element.id,
+      name: element.name,
+      url: element.url,
+      price: element.price2,
+      label: element.label,
+    };
+
+    menuList.push(menu);
+  } else {
+    const menu: IMenu = {
+      id: element.id,
+      name: element.name,
+      url: element.url,
+      price: element.price1,
+      label: element.label,
+    };
+
+    menuList.push(menu);
+  }
+});
+
+console.log("**** ", menuList);
 </script>
 
 <template>
@@ -22,18 +65,17 @@ watch(isToggle, (nuevoValor, viejoValor) => {
       </div>
 
       <div
-        class="flex p-4 gap-4 hover:border-indigo-800 hover:bg-slate-50 border-2 rounded-lg shadow-sm"
+        v-for="(item, index) in products"
+        :key="index"
+        class="flex p-4 mb-2 gap-4 hover:border-indigo-800 hover:bg-slate-50 border-2 rounded-lg shadow-sm"
       >
-        <!-- <span class=" bg-red-500 rounded-full" >
-        icon 
-        </span> -->
-        <img src="../assets/images/icon-arcade.svg" alt="" />
-
+        <!-- <img src="../assets/images/icon-arcade.svg" alt="" /> -->
+        <img :src="item.url" alt="" />
         <div class="tex">
-          <p class="font-bold text-indigo-800">Arcade</p>
-          <p class="text-sm text-slate-400">$9/mo</p>
+          <p class="font-bold text-indigo-800">{{ item.name }}</p>
+          <p class="text-sm text-slate-400">${{ item.price1 }}/mo</p>
           <p v-if="isToggle" class="text-sm text-indigo-900 font-semibold">
-            2 months free
+            {{ item.label }}
           </p>
         </div>
       </div>
@@ -73,4 +115,3 @@ watch(isToggle, (nuevoValor, viejoValor) => {
     </footer>
   </div>
 </template>
-../data/Menu
