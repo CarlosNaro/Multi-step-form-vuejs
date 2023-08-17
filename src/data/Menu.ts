@@ -6,6 +6,8 @@ export const products = [
     url: "src/assets/images/icon-arcade.svg",
     price1: 9,
     price2: 90,
+    time01:"mo",
+    time02:"yr",
     label: label,
   },
   {
@@ -14,6 +16,8 @@ export const products = [
     url: "src/assets/images/icon-advanced.svg",
     price1: 12,
     price2: 120,
+    time01:"mo",
+    time02:"yr",
     label: label,
   },
   {
@@ -22,6 +26,8 @@ export const products = [
     url: "src/assets/images/icon-pro.svg",
     price1: 15,
     price2: 150,
+    time01:"mo",
+    time02:"yr",
     label: label,
   },
 ];

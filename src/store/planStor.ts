@@ -4,7 +4,7 @@ import { products } from "../data/Menu";
 // const isToggle = ref(false)
 
 const state = reactive<IPlan>({
-  menuPlan: [],
+  menuPlan: null,
 });
 
 export default function useStorPlan() {
@@ -12,22 +12,34 @@ export default function useStorPlan() {
 
   const UsePlan = (isToggle: boolean) => {
     try {
-      state.menuPlan = products.map((product) => {
-        if (isToggle) {
-          return {
-            ...product,
-            price: product.price2,
-          };
-        } else {
-          return { ...product, price: product.price1 };
-        }
+      state.menuPlan = products.map((product) => { 
+
+        const { id, name, url, label } = product
+        const price = isToggle? product.price2 : product.price1
+        const time = isToggle ? product.time02 : product.time01
+        return{ id, name, url, price, time, label}
       });
     } catch (error) {}
   };
 
   return {
     UsePlan,
-    // isToggle,
     getPlan,
   };
 }
+      // state.menuPlan = products.map((product) => {
+      //   if (isToggle) {
+      //     return {
+      //       ...product,
+      //       price: product.price2,
+      //       time: product.time02
+      //     };
+      //   } else {
+      //     return { ...product, price: product.price1 , time:product.time01 };
+      //   }
+      // });
+  
+
+
+
+

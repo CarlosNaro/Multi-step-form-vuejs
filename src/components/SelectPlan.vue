@@ -21,7 +21,6 @@ const isData = (item: any) => {
 watch(isToggle, (nuevoValor, viejoValor) => {
   // console.log(`La variable cambió de ${viejoValor} a ${nuevoValor}`);
   UsePlan(isToggle.value);
-  // Aquí puedes ejecutar cualquier otra lógica que desees realizar cuando la variable cambia.
 });
 </script>
 
@@ -45,12 +44,12 @@ watch(isToggle, (nuevoValor, viejoValor) => {
         class="flex p-4 mb-2 gap-4 hover:border-indigo-800 hover:bg-slate-50 border-2 rounded-lg shadow-sm"
       >
         <!-- <img src="../assets/images/icon-arcade.svg" alt="" /> -->
-        <img :src="item.url" alt="" />
+        <img :src="item?.url" alt="" />
         <div class="tex">
-          <p class="font-bold text-indigo-800">{{ item.name }}</p>
-          <p class="text-sm text-slate-400">${{ item.price }}/mo</p>
+          <p class="font-bold text-indigo-800">{{ item?.name }}</p>
+          <p class="text-sm text-slate-400">$ {{ item?.price }}/{{item?.time}}</p>
           <p v-if="isToggle" class="text-sm text-indigo-900 font-semibold">
-            {{ item.label }}
+            {{ item?.label }}
           </p>
         </div>
       </div>

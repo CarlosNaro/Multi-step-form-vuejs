@@ -1,21 +1,24 @@
 <script setup lang="ts">
+import { rule } from "postcss";
 import { reactive, ref } from "vue";
 
 const Info = reactive({
-  name: "alonso",
-  email: "alonso@gmail.com",
-  phone: "123456789",
+  name: "",
+  email: "",
+  phone: "",
 });
 
 const rules = reactive({
-  Message: "Required field",
+  Message: "Campo Requerido",
   target: "text-red-600 text-xs absolute ",
-  required: false,
+  required: false ,
 });
 
-// const email = ref("");
+const validEmail = reactive({
+  emailError:false,
+  massege : ""
+})
 
-const emailError = ref(false);
 
 const isValidEmail = (value: any) => {
   // Validar el formato del email utilizando una expresión regular simple
@@ -24,25 +27,18 @@ const isValidEmail = (value: any) => {
 };
 
 const submitForm = () => {
+  
   // Verificar si el campo de email está vacío o no es un email válido
   if (!Info.email || !isValidEmail(Info.email)) {
-    emailError.value = true;
-  } else {
-    // Lógica para enviar el formulario
-    emailError.value = false;
-    // Aquí puedes enviar los datos del formulario o realizar otras acciones
-  }
+    validEmail.massege = "Ingresar Email Valido "
+    return validEmail.emailError = true;
+  } 
 };
 
-const is_validate = () => {
-  // if (objData.username == "") {
-  //   rules.required = true;
-  // } else {
-  //   return (rules.required = false);
-  // }
 
-  console.log("hola");
-};
+
+
+
 </script>
 
 <template>
@@ -56,7 +52,7 @@ const is_validate = () => {
         </span>
       </div>
 
-      <form @input="is_validate">
+      <form  >
         <div>
           <label for="name" class="block text-sm font-medium leading-6 text-gray-900"
             >Name</label
@@ -68,7 +64,9 @@ const is_validate = () => {
             type="text"
             placeholder="e.g. Stephen King"
             class="input-forms"
+            
           />
+           <!-- <span v-if=" rules.required   "  :class="rules.target">{{ rules.Message }}</span> -->
         </div>
 
         <div class="mt-4">
@@ -77,19 +75,18 @@ const is_validate = () => {
             class="block text-sm font-medium leading-6 text-gray-900"
             >Email Address</label
           >
-
           <input
             name="Email-Address"
             v-model="Info.email"
             type="email"
             placeholder="e.g. stephenking@loren.com"
             class="input-forms"
-            :class="{ error: emailError }"
+            :class="{ error: validEmail.emailError }"
+            
           />
+          <p v-if="validEmail.emailError || rules.required" class="error-text">{{validEmail.massege}}</p>
         </div>
-        <p v-if="emailError" class="error-text">Por favor, ingresa un email válido.</p>
-        <span v-if="rules.required" :class="rules.target">{{ rules.Message }}</span>
-
+        
         <div class="mt-4">
           <label
             for="Phone-Number"
@@ -104,7 +101,9 @@ const is_validate = () => {
             type="number"
             placeholder="e.g. +1 234 567 890"
             class="input-forms"
+            
           />
+          <!-- <span v-if=" rules.required " :class="rules.target">{{ rules.Message }}</span> -->
         </div>
       </form>
     </div>
@@ -114,7 +113,7 @@ const is_validate = () => {
     >
       <button
         @click="submitForm"
-        disabled
+      
         type="submit"
         class="flex rounded-md bg-indigo-950 px-5 py-3 text-md font-semibold leading-6 text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-950"
       >
@@ -133,3 +132,5 @@ const is_validate = () => {
   color: red;
 }
 </style>
+<!-- <p v-if="emailError" class="error-text">Por favor, ingresa un email válido.</p> -->
+          <!-- <span v-if="rules.required" :class="rules.target">{{ rules.Message }}</span> -->
