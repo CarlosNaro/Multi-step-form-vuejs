@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { rule } from "postcss";
 import { reactive, ref } from "vue";
 
 const Info = reactive({
@@ -10,13 +11,14 @@ const Info = reactive({
 const rules = reactive({
   Message: "Campo Requerido",
   target: "text-red-600 text-xs absolute ",
-  required: false,
+  required: false ,
 });
 
 const validEmail = reactive({
-  emailError: false,
-  massege: "",
-});
+  emailError:false,
+  massege : ""
+})
+
 
 const isValidEmail = (value: any) => {
   // Validar el formato del email utilizando una expresión regular simple
@@ -25,6 +27,7 @@ const isValidEmail = (value: any) => {
 };
 
 const submitForm = () => {
+  
   // Verificar si el campo de email está vacío o no es un email válido
   if (!Info.email || !isValidEmail(Info.email)) {
     validEmail.massege = "Ingresar Email Valido ";

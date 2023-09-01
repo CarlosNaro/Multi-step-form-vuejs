@@ -33,6 +33,7 @@ watch(isToggle, (nuevoValor, viejoValor) => {
         </span>
       </div>
 
+<<<<<<< HEAD
       <div class=" flex    gap-3 justify-between  " >
         <div
           v-for="(item, index) in listPlan"
@@ -49,6 +50,22 @@ watch(isToggle, (nuevoValor, viejoValor) => {
               {{ item.label }}
             </p>
           </div>
+=======
+      <div
+        v-for="(item, index) in listPlan"
+        :key="index"
+        @click="isData(item)"
+        class="flex p-4 mb-2 gap-4 hover:border-indigo-800 hover:bg-slate-50 border-2 rounded-lg shadow-sm"
+      >
+        <!-- <img src="../assets/images/icon-arcade.svg" alt="" /> -->
+        <img :src="item?.url" alt="" />
+        <div class="tex">
+          <p class="font-bold text-indigo-800">{{ item?.name }}</p>
+          <p class="text-sm text-slate-400">$ {{ item?.price }}/{{item?.time}}</p>
+          <p v-if="isToggle" class="text-sm text-indigo-900 font-semibold">
+            {{ item?.label }}
+          </p>
+>>>>>>> 3b0fff0cdf899eb6fc2cc24bb807ee9bfa0938df
         </div>
       </div>
 
