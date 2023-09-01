@@ -15,10 +15,9 @@ const rules = reactive({
 });
 
 const validEmail = reactive({
-  emailError:false,
-  massege : ""
-})
-
+  emailError: false,
+  massege: "",
+});
 
 const isValidEmail = (value: any) => {
   // Validar el formato del email utilizando una expresión regular simple
