@@ -7,6 +7,8 @@ export const products = [
     price1: 9,
     price2: 90,
     label: label,
+    time01:"mo",
+    time02:"yr"
   },
   {
     id: 2,
@@ -15,6 +17,8 @@ export const products = [
     price1: 12,
     price2: 120,
     label: label,
+    time01:"mo",
+    time02:"yr"
   },
   {
     id: 3,
@@ -23,5 +27,7 @@ export const products = [
     price1: 15,
     price2: 150,
     label: label,
+    time01:"mo",
+    time02:"yr"
   },
 ];

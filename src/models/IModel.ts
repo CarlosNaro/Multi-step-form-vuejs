@@ -4,7 +4,20 @@ export interface IMenu {
   url: string;
   price: number;
   label: string;
+  time: string;
 }
-export interface IPlan {
-  menuPlan: IMenu[];
+export interface IPlanStore {
+  menuPlan: IMenu[] | null;
+}
+
+export interface IMenuAddOns {
+  id: number;
+  title: string;
+  subTitle: string;
+  price: number;
+  time: string;
+}
+
+export interface IAddOnsStore {
+  AddOns: IMenuAddOns[] | null;
 }

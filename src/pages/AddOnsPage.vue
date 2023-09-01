@@ -1,5 +1,6 @@
+<script setup lang="ts" >
+import AddOns from '../components/AddOns.vue';
+</script>
 <template>
-    <div>
-        AddOnspage
-    </div>
+    <AddOns/>
 </template>
