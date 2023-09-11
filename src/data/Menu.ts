@@ -9,8 +9,6 @@ export const products = [
     time01:"mo",
     time02:"yr",
     label: label,
-    time01:"mo",
-    time02:"yr"
   },
   {
     id: 2,
@@ -21,8 +19,7 @@ export const products = [
     time01:"mo",
     time02:"yr",
     label: label,
-    time01:"mo",
-    time02:"yr"
+
   },
   {
     id: 3,
@@ -33,7 +30,5 @@ export const products = [
     time01:"mo",
     time02:"yr",
     label: label,
-    time01:"mo",
-    time02:"yr"
   },
 ];

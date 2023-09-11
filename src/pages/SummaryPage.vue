@@ -1,6 +1,6 @@
+<script setup lang="ts" > 
+import Summary from '../components/Summary.vue';
+</script>
 <template>
-    <div>
-
-        Summary
-    </div>
+<Summary/>
 </template>

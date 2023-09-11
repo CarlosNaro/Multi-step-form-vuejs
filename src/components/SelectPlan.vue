@@ -1,71 +1,71 @@
 <script setup lang="ts">
-import { ref, watch, computed, reactive, onMounted, onUpdated } from "vue";
+import { ref, watch, computed, onMounted } from "vue";
 import Toggle from "./Toggle.vue";
 import useStorPlan from "../store/planStor";
-import { isToggle } from "../store/ToggleStor"
-
-// const isToggle  = ref(false)
+import { isToggle } from "../store/ToggleStor";
+import { setItem } from "../action/localStorage";
+import { useRouter } from "vue-router";
 
 const { getPlan, UsePlan } = useStorPlan();
 const listPlan = computed(() => getPlan());
+const selectedPlan = ref();
+const route = useRouter()
 
 onMounted(() => {
   UsePlan();
 });
 
 const isData = (item: any) => {
-  console.log("datos recogidos ", item);
+  selectedPlan.value = item;
+};
+const sendData = () => {
+  if (!selectedPlan.value) {
+    alert("select Plan ");
+    return;
+  }
+  setItem("Plan", selectedPlan.value);
+        
+  route.push("/add",)
 };
 
-watch(isToggle, (nuevoValor, viejoValor) => {
-  UsePlan(isToggle.value);
+watch(isToggle, () => {
+  UsePlan();
 });
 </script>
 
 <template>
-  <div class="flex flex-col justify-between h-full md:bg-white">
-    <div class="bg-white rounded-lg text-justify">
+  <div class="flex flex-col justify-between h-screen md:h-full rounded-lg">
+    <div class="mt-24 p-8 md:p-0 md:mt-0 z-20 bg-white mx-4 rounded-lg">
       <h1 class="text-xl md:text-3xl font-bold">Personal info</h1>
 
       <div class="Encabezado pb-5">
-        <span class="text-justify text-sm text-slate-400">
+        <span class="text-justify md:text-sm text-slate-400">
           Please provide your name, email addres, and phone number.
         </span>
       </div>
 
-<<<<<<< HEAD
-      <div class=" flex    gap-3 justify-between  " >
+      <div class="md:flex md:gap-4">
         <div
           v-for="(item, index) in listPlan"
           :key="index"
           @click="isData(item)"
-          class="xs:flex md:flex-1 md:flex-col  p-4 mb-2 gap-4 hover:border-indigo-800 hover:bg-slate-50 border-2 rounded-lg shadow-sm"
+          class="flex p-4 mb-2 gap-4 md:flex-1 md:flex-col hover:border-indigo-800 hover:bg-slate-100 border-2 rounded-lg shadow-sm"
+          :class="{ 'border-indigo-800 bg-slate-100 ': item == selectedPlan }"
         >
-         
-          <img  class="  md:w-7 " :src="item.url" alt="" />
-          <div class=" pt-8  ">
-            <p class="  text-indigo-800 font-bold text-sm ">{{ item.name }}</p>
-            <p class="  text-slate-400 font-mono text-xs ">${{ item.price }}/{{item.time}}</p>
-            <p v-if="isToggle" class=" text-xs text-indigo-900 font-semibold md:pt-1 ">
-              {{ item.label }}
+          <!-- <img src="../assets/images/icon-arcade.svg" alt="" /> -->
+          <img class="md:w-4/12" :src="item?.url" alt="" />
+          <div class="md:mt-5">
+            <p class="font-bold text-indigo-800 text-sm">{{ item?.name }}</p>
+            <p class="text-sm md:text-xs text-slate-400">
+              $ {{ item?.price }}/{{ item?.time }}
+            </p>
+            <p
+              v-if="isToggle"
+              class="text-xs text-indigo-900 font-semibold md:pt-1"
+            >
+              {{ item?.label }}
             </p>
           </div>
-=======
-      <div
-        v-for="(item, index) in listPlan"
-        :key="index"
-        @click="isData(item)"
-        class="flex p-4 mb-2 gap-4 hover:border-indigo-800 hover:bg-slate-50 border-2 rounded-lg shadow-sm"
-      >
-        <!-- <img src="../assets/images/icon-arcade.svg" alt="" /> -->
-        <img :src="item?.url" alt="" />
-        <div class="tex">
-          <p class="font-bold text-indigo-800">{{ item?.name }}</p>
-          <p class="text-sm text-slate-400">$ {{ item?.price }}/{{item?.time}}</p>
-          <p v-if="isToggle" class="text-sm text-indigo-900 font-semibold">
-            {{ item?.label }}
-          </p>
->>>>>>> 3b0fff0cdf899eb6fc2cc24bb807ee9bfa0938df
         </div>
       </div>
 
@@ -93,16 +93,16 @@ watch(isToggle, (nuevoValor, viejoValor) => {
       </div>
     </div>
 
-    <footer class="footer-button flex justify-between  py-2  bg-white">
+    <footer class="footer-button flex justify-between p-4 md:py-2 bg-white">
       <button
-       
-        class="flex rounded-md  py-2 text-md text-slate-500  hover:text-indigo-950 font-semibold shadow-sm   "
+        class="flex rounded-md py-2 text-md text-slate-500 hover:text-indigo-950 font-semibold shadow-sm"
       >
         Go Back
       </button>
 
       <button
-        class="flex rounded-md bg-[#02295A] px-5 py-2 text-md font-semibold leading-6 text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-950"
+        @click="sendData"
+        class="flex rounded-md bg-[#02295A] px-5 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-950"
       >
         Next Step
       </button>

@@ -5,9 +5,7 @@ export interface IMenu {
   price: number;
   time:string;
   label: string;
-  time: string;
 }
-<<<<<<< HEAD
 export interface IPlanStore {
   menuPlan: IMenu[] | null;
 }
@@ -22,8 +20,4 @@ export interface IMenuAddOns {
 
 export interface IAddOnsStore {
   AddOns: IMenuAddOns[] | null;
-=======
-export interface IPlan {
-  menuPlan: IMenu[] | null;
->>>>>>> 3b0fff0cdf899eb6fc2cc24bb807ee9bfa0938df
 }
