@@ -23,9 +23,12 @@ const sendData = () => {
     alert("select Plan ");
     return;
   }
-  setItem("Plan", selectedPlan.value);
-        
+  setItem("Plan", selectedPlan.value);    
   route.push("/add",)
+};
+
+const preview = () => {
+  route.push("/");
 };
 
 watch(isToggle, () => {
@@ -95,6 +98,7 @@ watch(isToggle, () => {
 
     <footer class="footer-button flex justify-between p-4 md:py-2 bg-white">
       <button
+      @click="preview"
         class="flex rounded-md py-2 text-md text-slate-500 hover:text-indigo-950 font-semibold shadow-sm"
       >
         Go Back

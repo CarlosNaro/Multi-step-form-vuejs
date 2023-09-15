@@ -16,8 +16,17 @@ export interface IMenuAddOns {
   subTitle: string;
   price: number;
   time: string;
+  checked:boolean
 }
 
 export interface IAddOnsStore {
   AddOns: IMenuAddOns[] | null;
 }
+
+export interface IPlanSummary{
+  name: string | null;
+  price: number | null;
+  time:string | null;
+  label: string | null;
+}
+

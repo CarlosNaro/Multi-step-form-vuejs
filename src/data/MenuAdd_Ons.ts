@@ -7,7 +7,8 @@ export const menuAdd_Ons = [
         price01: 1,
         price02: 10,
         time01:"mo",
-        time02:"yr"
+        time02:"yr",
+        checked: false
     },
     {
         id:2,
@@ -16,7 +17,8 @@ export const menuAdd_Ons = [
         price01: 2,
         price02: 20,
         time01:"mo",
-        time02:"yr"
+        time02:"yr",
+        checked: false
     }, 
     {
         id:3,
@@ -25,6 +27,7 @@ export const menuAdd_Ons = [
         price01: 2,
         price02: 20,
         time01:"mo",
-        time02:"yr"
+        time02:"yr",
+        checked: false
     }
 ]

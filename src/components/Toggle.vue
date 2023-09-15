@@ -19,7 +19,6 @@ const value = computed({
 const confirmCancel = () => {
   value.value = !value.value;
   localStorage.removeItem("Plan")
-  // emit(valor);
 };
 </script>
 <template>

@@ -18,20 +18,20 @@ onMounted(() => {
   window.addEventListener("resize", updateWindowSize);
 });
 
-window.addEventListener('beforeunload', function (event:any) {
+window.addEventListener('beforeunload', function () {
   localStorage.clear();
 });
 </script>
 
 <template>
-  <div class="flex md:items-center md:justify-center h-screen  bg-slate-100">
-    <div class=" flex md:bg-white  md:w-7/12  md:h-5/6 rounded-2xl md:p-3   ">
-      <div class="  h-min md:h-auto  w-auto absolute md:relative z-10 " > 
-        <Side-Bar v-if="screenWidth > 768" />
-        <Navbar class="" v-if="screenWidth < 768" />
-      
+  <div class="flex   md:items-center md:justify-center h-screen  bg-slate-100 ">
+  
+    <div  class=" flex  md:bg-white md:w-11/12 md:h-5/6  lg:w-10/12 lg:h-4/6 xl:w-7/12 xl:h-5/6 2xl:w-4/12 2xl:h-4/6     rounded-2xl md:p-3 ">
+      <div class="  h-min md:h-auto w-full md:w-auto bg-yellow-200  absolute md:relative z-10 " > 
+        <Side-Bar class=" hidden md:block  "  />
+        <Navbar  class=" md:hidden " />
       </div>
-      <div class="flex-1  absolute md:relative sm:px-1  md:px-5 lg:px-16 md:pt-10  overflow-y-auto custom-scrollbar   " > 
+      <div class="flex-1  w-full absolute md:relative sm:px-1  md:px-5 lg:px-16 md:pt-10  overflow-y-auto custom-scrollbar   " > 
         <router-view  />
       </div>
 

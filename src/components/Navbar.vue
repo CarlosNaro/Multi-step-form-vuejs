@@ -15,8 +15,8 @@ const ListRouter = computed(() => router.options.routes);
 // console.log(" LISTA DE RUTAS ", ListRouter.value);
 </script>
 <template>
-  <nav class="   " >
-    <div class="flex justify-center mt-8 absolute w-full">
+  <nav >
+    <div class="flex justify-center    mt-8 absolute w-full">
       <router-link
         v-for="(index, item) in ListRouter"
         :key="item"
