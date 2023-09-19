@@ -87,7 +87,7 @@ const sendData = () => {
 
         <div class="mt-4">
 
-          <div class=" flex justify-between font-medium text-[#02295A] "> <span>Phone Number</span> <span v-if="isPhone" class=" text-red-500" > This field is required </span> </div>
+          <div class=" flex justify-between font-medium text-[#02295A] "> <span>Phone Number</span> <span v-if="isPhone" class=" text-red-500 text-xs " > This field is required </span> </div>
 
           <input
             name="Phone-Number"

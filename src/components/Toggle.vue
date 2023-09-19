@@ -24,7 +24,7 @@ const confirmCancel = () => {
 <template>
   <div
     @click="confirmCancel"
-    class="flex items-center bg-gray-300 rounded-full w-12 h-6 p-1 transition-colors cursor-pointer"
+    class="flex items-center bg-[#02295A] rounded-full w-12 h-6 p-1 transition-colors cursor-pointer"
     :class="{ ' bg-green-500': value }"
   >
     <div

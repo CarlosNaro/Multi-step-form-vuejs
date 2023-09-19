@@ -11,6 +11,7 @@ const service = getItem("services");
 const plan = getItem("Plan") as IMenu;
 const route = useRouter();
 const isAlertError = ref(false);
+const isSummary = ref(false);
 
 const modelPlan = ref<IPlanSummary>({
   name: plan?.name,
@@ -35,12 +36,16 @@ const preview = () => {
 
 const modelFinal = () => {
   if (total) isFinal.value = true;
+  isSummary.value = false;
+  localStorage.clear()
   return;
 };
 
 onMounted(() => {
   if (service == null || plan == null) {
     isAlertError.value = true;
+  } else {
+    isSummary.value = true;
   }
 });
 </script>
@@ -50,7 +55,7 @@ onMounted(() => {
   <AlertError v-if="isAlertError" />
 
   <div
-    v-if="!isAlertError"
+    v-if="isSummary"
     class="flex flex-col justify-between h-screen md:h-full rounded-lg"
   >
     <div class="mt-24 p-8 md:p-0 md:mt-0 z-20 bg-white mx-4 rounded-lg">
@@ -64,7 +69,7 @@ onMounted(() => {
 
       <div class="bg-slate-50 rounded-lg p-4">
         <div class="flex flex-col mb-3">
-          <div class="flex justify-between text-[#02295A] font-medium text-sm">
+          <div class="flex justify-between text-[#02295A] font-bold text-sm">
             <span> {{ modelPlan.name }}( {{ modelPlan.label }} )</span>
             <span> ${{ modelPlan.price }}/{{ modelPlan.time }}</span>
           </div>
@@ -83,7 +88,9 @@ onMounted(() => {
           class="flex justify-between text-slate-500 text-xs mt-3"
         >
           <span>{{ item.title }}</span>
-          <span> +${{ item.price }}/{{ item.time }}</span>
+          <span class="text-[#02295A] font-bold">
+            +${{ item.price }}/{{ item.time }}</span
+          >
         </div>
       </div>
       <div class="flex justify-between p-4">
@@ -97,7 +104,7 @@ onMounted(() => {
     <footer class="footer-button flex justify-between p-4 md:py-2 bg-white">
       <button
         @click="preview"
-        class="flex rounded-md py-2 text-md text-slate-500 hover:text-indigo-950 font-semibold shadow-sm"
+        class="flex rounded-md py-2 text-md text-slate-500 hover:text-[#02295A] font-semibold hover:font-bold cursor-pointer shadow-sm"
       >
         Go Back
       </button>

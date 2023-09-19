@@ -47,11 +47,11 @@ const preview = () => {
 <template>
   <div class="flex flex-col justify-between h-screen md:h-full rounded-lg">
     <div class="mt-24 p-8 md:p-0 md:mt-0 z-20 bg-white mx-4 rounded-lg">
-      <h1 class="text-xl md:text-3xl font-bold">Personal info</h1>
+      <h1 class="text-xl md:text-3xl font-bold">Pick add-ons</h1>
 
       <div class="Encabezado pb-5">
         <span class="text-justify md:text-sm text-slate-400">
-          Add-ons held enhance your gaming experience
+          Add-ons held enhance your gaming experience.
         </span>
       </div>
 
@@ -70,7 +70,7 @@ const preview = () => {
             <span class="font-bold text-xs md:text-sm text-[#02295A]">
               {{ item.title }}
             </span>
-            <span class="sub-Title">{{ item.subTitle }}</span>
+            <span class="sub-Title text-slate-400 text-[xx-small] md:text-xs font-medium">{{ item.subTitle }}</span>
           </div>
         </div>
         <span class="text-xs font-bold text-indigo-500">
@@ -82,7 +82,7 @@ const preview = () => {
     <footer class="footer-button flex justify-between p-4 md:py-2 bg-white">
       <button
         @click="preview"
-        class="flex rounded-md py-2 text-md text-slate-500 hover:text-indigo-950 font-semibold shadow-sm"
+        class="flex rounded-md py-2 text-md text-slate-500 hover:text-[#02295A] font-semibold hover:font-bold cursor-pointer  shadow-sm"
       >
         Go Back
       </button>
@@ -102,7 +102,7 @@ input[type="checkbox"] {
   transform: scale(1.5);
 }
 
-.sub-Title {
+/* .sub-Title {
   font-size: xx-small;
-}
+} */
 </style>
