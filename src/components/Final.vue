@@ -10,7 +10,7 @@
 
         <span class="text-center text-sm   text-slate-500 font-semibold mt-5">
           Thanks for conforming your subscription! We hope you have fun using
-          our platform. if you ever need support, please feet! free to email us
+          our platform. if you ever need support, please feel free to email us
           at support@loremgaming.com
         </span>
       </div>

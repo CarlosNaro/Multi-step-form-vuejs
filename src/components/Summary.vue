@@ -6,6 +6,7 @@ import { IPlanSummary, IMenu, IMenuAddOns } from "../models/IModel";
 import { getItem } from "../action/localStorage";
 import { useRouter } from "vue-router";
 
+
 const isFinal = ref(false);
 const service = getItem("services");
 const plan = getItem("Plan") as IMenu;
@@ -38,6 +39,7 @@ const modelFinal = () => {
   if (total) isFinal.value = true;
   isSummary.value = false;
   localStorage.clear()
+  
   return;
 };
 
@@ -94,7 +96,7 @@ onMounted(() => {
         </div>
       </div>
       <div class="flex justify-between p-4">
-        <span class="text-slate-500 text-sm mt-3"> Online service </span>
+        <span class="text-slate-500 text-sm mt-3"> Total (per year) </span>
         <span class="text-indigo-500 font-bold medium text-lg">
           +${{ total }}/{{ modelPlan.time }}
         </span>

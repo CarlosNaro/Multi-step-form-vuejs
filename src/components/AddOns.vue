@@ -36,7 +36,6 @@ const uploadData = () => {
   route.push("/summary");
 };
 const preview = () => {
-  // route.replace({ name: "preview" });
   route.push("/select");
 };
 

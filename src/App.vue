@@ -1,26 +1,7 @@
 <script setup lang="ts">
 import Navbar from "./components/Navbar.vue";
-import { ref, onBeforeUnmount, onMounted } from "vue";
 import SideBar from "./components/SideBar.vue";
 
-const screenWidth = ref(window.innerWidth);
-
-const updateWindowSize = () => {
-  screenWidth.value = window.innerWidth;
-};
-
-
-onBeforeUnmount(() => {
-  window.removeEventListener("resize", updateWindowSize);
-});
-
-onMounted(() => {
-  window.addEventListener("resize", updateWindowSize);
-});
-
-window.addEventListener('beforeunload', function () {
-  localStorage.clear();
-});
 </script>
 
 <template>

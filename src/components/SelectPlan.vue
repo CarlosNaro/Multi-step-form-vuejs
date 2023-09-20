@@ -11,6 +11,8 @@ const listPlan = computed(() => getPlan());
 const selectedPlan = ref();
 const route = useRouter()
 
+
+
 onMounted(() => {
   UsePlan();
 });
@@ -30,6 +32,8 @@ const sendData = () => {
 const preview = () => {
   route.push("/");
 };
+
+
 
 watch(isToggle, () => {
   UsePlan();
