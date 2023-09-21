@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted } from "vue";
 import useStoreAddOns from "../store/addOnsStor";
 import { setItem } from "../action/localStorage";
 import { IMenuAddOns } from "../models/IModel";
@@ -27,20 +27,17 @@ const selectData = (item: IMenuAddOns) => {
 };
 
 const uploadData = () => {
-  if(!selectedItems.length){
-    localStorage.removeItem("services")
-    alert("select service")
-    return
+  if (!selectedItems.length) {
+    localStorage.removeItem("services");
+    alert("select service");
+    return;
   }
-  setItem('services',selectedItems);
+  setItem("services", selectedItems);
   route.push("/summary");
 };
 const preview = () => {
   route.push("/select");
 };
-
-
-
 </script>
 
 <template>
@@ -69,7 +66,10 @@ const preview = () => {
             <span class="font-bold text-xs md:text-sm text-[#02295A]">
               {{ item.title }}
             </span>
-            <span class="sub-Title text-slate-400 text-[xx-small] md:text-xs font-medium">{{ item.subTitle }}</span>
+            <span
+              class="sub-Title text-slate-400 text-[xx-small] md:text-xs font-medium"
+              >{{ item.subTitle }}</span
+            >
           </div>
         </div>
         <span class="text-xs font-bold text-indigo-500">
@@ -81,7 +81,7 @@ const preview = () => {
     <footer class="footer-button flex justify-between p-4 md:py-2 bg-white">
       <button
         @click="preview"
-        class="flex rounded-md py-2 text-md text-slate-500 hover:text-[#02295A] font-semibold hover:font-bold cursor-pointer  shadow-sm"
+        class="flex rounded-md py-2 text-md text-slate-500 hover:text-[#02295A] font-semibold hover:font-bold cursor-pointer shadow-sm"
       >
         Go Back
       </button>
