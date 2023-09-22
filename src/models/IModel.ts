@@ -1,9 +1,9 @@
 export interface IMenu {
   id: number;
   name: string;
-  url: string;
+  url: any;
   price: number;
-  time:string;
+  time: string;
   label: string;
 }
 export interface IPlanStore {
@@ -16,17 +16,16 @@ export interface IMenuAddOns {
   subTitle: string;
   price: number;
   time: string;
-  checked:boolean
+  checked: boolean;
 }
 
 export interface IAddOnsStore {
   AddOns: IMenuAddOns[] | null;
 }
 
-export interface IPlanSummary{
+export interface IPlanSummary {
   name: string | null;
   price: number | null;
-  time:string | null;
+  time: string | null;
   label: string | null;
 }
-

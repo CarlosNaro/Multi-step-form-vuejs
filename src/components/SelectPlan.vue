@@ -9,9 +9,7 @@ import { useRouter } from "vue-router";
 const { getPlan, UsePlan } = useStorPlan();
 const listPlan = computed(() => getPlan());
 const selectedPlan = ref();
-const route = useRouter()
-
-
+const route = useRouter();
 
 onMounted(() => {
   UsePlan();
@@ -25,15 +23,13 @@ const sendData = () => {
     alert("select Plan ");
     return;
   }
-  setItem("Plan", selectedPlan.value);    
-  route.push("/add",)
+  setItem("Plan", selectedPlan.value);
+  route.push("/add");
 };
 
 const preview = () => {
   route.push("/");
 };
-
-
 
 watch(isToggle, () => {
   UsePlan();
@@ -43,11 +39,11 @@ watch(isToggle, () => {
 <template>
   <div class="flex flex-col justify-between h-screen md:h-full rounded-lg">
     <div class="mt-24 p-8 md:p-0 md:mt-0 z-20 bg-white mx-4 rounded-lg">
-      <h1 class="text-xl md:text-3xl font-bold">Select your Plan </h1>
+      <h1 class="text-xl md:text-3xl font-bold">Select your Plan</h1>
 
       <div class="Encabezado pb-5">
         <span class="text-justify md:text-sm text-slate-400">
-          You have the option of monthly or yearly billing 
+          You have the option of monthly or yearly billing
         </span>
       </div>
 
@@ -59,8 +55,7 @@ watch(isToggle, () => {
           class="flex p-4 mb-2 gap-4 md:flex-1 md:flex-col hover:border-indigo-800 hover:bg-slate-100 border-2 rounded-lg shadow-sm"
           :class="{ 'border-indigo-800 bg-slate-100 ': item == selectedPlan }"
         >
-       
-          <img class="md:w-4/12" :src="item?.url" alt="" />
+          <img class="md:w-4/12" :src="item.url" alt="" />
           <div class="md:mt-5">
             <p class="font-bold text-indigo-800 text-sm">{{ item?.name }}</p>
             <p class="text-sm md:text-xs text-slate-400">
@@ -102,8 +97,8 @@ watch(isToggle, () => {
 
     <footer class="footer-button flex justify-between p-4 md:py-2 bg-white">
       <button
-      @click="preview"
-      class="flex rounded-md py-2 text-md text-slate-500 hover:text-[#02295A] font-semibold hover:font-bold cursor-pointer  shadow-sm"
+        @click="preview"
+        class="flex rounded-md py-2 text-md text-slate-500 hover:text-[#02295A] font-semibold hover:font-bold cursor-pointer shadow-sm"
       >
         Go Back
       </button>
